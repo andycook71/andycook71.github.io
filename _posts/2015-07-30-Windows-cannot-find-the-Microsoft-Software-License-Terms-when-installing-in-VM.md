@@ -5,9 +5,9 @@ title: Windows cannot find the Microsoft Software License Terms when installing 
 
 When installing Windows into a VM, eg under Parallels you get the following message:
 
-![_config.yml]({{ site.baseurl }}/images/2015-07-30-Alert.png =500x)
+<img src="/images/2015-07-30-Alert.png" width="500" />
 
 To fix it restart the install, and make sure "Express install" checkbox is not clicked:
 
-![_config.yml]({{ site.baseurl }}/images/2015-07-30-Express-checkbox.png =500x)
+<img src="/images/2015-07-30-Express-checkbox.png" width="500" />
 
