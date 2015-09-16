@@ -16,7 +16,7 @@ var $path = $("#path");
 var $courtyard = $("#courtyard");
 
 var tileWidthMm = 200;
-var tileWidth = $verandah.outerWidth() / parseFloat($verandah.data("cols"));
+var tileWidth = ($("#verandah").innerWidth()) / parseFloat($verandah.data("cols"));
 
 var data = loadData();
 
@@ -69,6 +69,7 @@ function drawTiles(location, outlines, data) {
 			if (outlines) div.addClass("outline");
 			div.data = data.tiles[i][j];
 			location.append(div);
+			div.attr("title", "(" + i + "," + j + ")");
 			div.css("width", Math.min(tileWidth, locationWidth - (i * tileWidth)) + "px");
 			div.css("height", tileWidth + "px");
 			div.css("left", i * tileWidth);
@@ -78,7 +79,29 @@ function drawTiles(location, outlines, data) {
 	}
 	location.width(data.cols * tileWidth);
 	location.height(data.rows * tileWidth);
-	$("h2." + location[0].id).text(location[0].id + " (" + data.tiles.length * tileWidthMm + "x" + data.tiles[0].length * tileWidthMm + "mm)");
+	$("h2." + location[0].id).html(location[0].id + " <span>(" + data.cols + "x" + data.rows + " tiles, " + data.tiles.length * tileWidthMm + "x" + data.tiles[0].length * tileWidthMm + "mm)</span>");
+	updateCount();
+}
+
+function updateCount() {
+	var rippleCount = 0, straightCount = 0, curvedCount = 0, lotusCount = 0;
+	var allTiles = data.verandah.tiles.concat(data.path.tiles, data.courtyard.tiles);
+		for (var i=0; i<allTiles.length; i++)
+		{
+			for (var j=0; j<allTiles[i].length; j++) {
+				switch (allTiles[i][j].pattern) {
+					case "ripple": rippleCount++; break;
+					case "straight": straightCount++; break;
+					case "curved": curvedCount++; break;
+					case "lotus": lotusCount++; break;
+				}
+			}
+	}
+
+	$("ul li span.ripple").text(rippleCount);
+	$("ul li span.straight").text(straightCount);
+	$("ul li span.curved").text(curvedCount);
+	$("ul li span.lotus").text(lotusCount);
 }
 
 function clickTile(e) {
@@ -93,6 +116,7 @@ function clickTile(e) {
 		tile.pattern = patterns[(patterns.indexOf(tile.pattern) + 1) % patterns.length];
 		div.addClass(tile.pattern);
 	}
+	updateCount();
 	saveData();
 }
 

@@ -7,6 +7,10 @@ h2 {
 	text-transform: capitalize;
 }
 
+h2 span {
+	font-size: 12px;
+}
+
 ul {
 	padding-top: 15px;
 	clear: left;
@@ -35,7 +39,7 @@ a:hover {
 }
 
 #verandah {
-	width: 80%;
+	width: 100%;
 	position: relative;
 }
 
@@ -51,31 +55,31 @@ a:hover {
 	position: relative;
 }
 
-.curved {
+div.curved {
 	background-image: url("curved.png");
 }
-.curved.outline {
+div.curved.outline {
 	background-image: url("curved.svg");	
 }
 
-.straight {
+div.straight {
 	background-image: url("straight.png");
 }
-.straight.outline {
+div.straight.outline {
 	background-image: url("straight.svg");	
 }
 
-.lotus {
+div.lotus {
 	background-image: url("lotus.png");
 }
-.lotus.outline {
+div.lotus.outline {
 	background-image: url("lotus.svg");	
 }
 
-.ripple {
+div.ripple {
 	background-image: url("ripples.png");
 }
-.ripple.outline {
+div.ripple.outline {
 	background-image: url("ripples.svg");	
 }
 
