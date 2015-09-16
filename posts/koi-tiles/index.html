@@ -1,27 +1,30 @@
 <html>
 	<head>
-		<script src="/js/jquery-2.1.4.min.js"></script>
-		<script language="javascript" src="/js/lz-string.min.js"></script>
+		<script src="../../js/jquery-2.1.4.min.js"></script>
+		<script language="javascript" src="../../js/lz-string.min.js"></script>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" media="all" href="../../css/style.css" />
 		<link rel="stylesheet" href="koi.css"></style>
 	</head>
 	<body>
-		<h2>Verandah</h2>
+		<h2 class="verandah"></h2>
 		<div id="verandah" data-rows="4" data-cols="21.5"></div>
 
 		<div>
 			<div style="width: 50%; float: left">
-				<h2>Path</h2>
+				<h2 class="path"></h2>
 				<div id="path" data-rows="4" data-cols="9"></div>
 			</div>
 			<div style="width: 50%; float: right">
-				<h2>Courtyard</h2>
+				<h2 class="courtyard"></h2>
 				<div id="courtyard" data-rows="7" data-cols="9"></div>
 			</div>
 		</div>
 
 		<textarea id="data" style="display: none"></textarea>
-		<div><a href="index.html">Reset</a></div>
-		<div><a id="url"></a></div>
+		<div><a class="btn btn-primary" href="index.html">Reset to plain pattern</a></div>
+		<div><a class="btn btn-primary" id="url"></a></div>
 		<label><input type="checkbox" id="toggleOutlines" />Toggle outlines</label>
 	</body>
 	<script src="koi.js"></script>

@@ -15,6 +15,7 @@ var $verandah = $("#verandah");
 var $path = $("#path");
 var $courtyard = $("#courtyard");
 
+var tileWidthMm = 200;
 var tileWidth = $verandah.outerWidth() / parseFloat($verandah.data("cols"));
 
 var data = loadData();
@@ -73,6 +74,7 @@ function drawTiles(location, outlines, data) {
 	}
 	location.width(data.cols * tileWidth);
 	location.height(data.rows * tileWidth);
+	$("h2." + location[0].id).text(location[0].id + " (" + data.tiles.length * tileWidthMm + "x" + data.tiles[0].length * tileWidthMm + "mm)");
 }
 
 function clickTile(e) {
@@ -94,16 +96,16 @@ function loadData() {
 	var q = document.location.search.replace(/^\?/, "");
 	if (q) {
 		var decoded = LZString.decompressFromEncodedURIComponent(q);
-		return JSON.parse(decoded);
+		return rehydrateData(JSON.parse(decoded));
 	}
 	else return {};
 }
 
 function saveData() {
-	$("#data").val(JSON.stringify(data));
+	var serialized = JSON.stringify(dehydrateData(data));
+	$("#data").val(serialized);
 
-	var jsonData = JSON.stringify(data);
-	var encodedData = LZString.compressToEncodedURIComponent(jsonData);
+	var encodedData = LZString.compressToEncodedURIComponent(serialized);
 //	history.replaceState({ data: encodedData }, document.title, document.location.href);
 
     var url = window.location.protocol
@@ -112,9 +114,62 @@ function saveData() {
         + window.location.pathname
         + "?" + encodedData;
 //	$("#url").attr("href", url).text(url + " (" + jsonData.length + " -> " + encodedData.length + " chars)");
-	$("#url").attr("href", url).text("Link to this");
-    history.pushState({ data: encodedData }, jQuery(document).find('title').text(), url);
+	$("#url").attr("href", url).text("Link to this").attr("title", "(json: " + JSON.stringify(data).length +", compressed JSON: " + LZString.compressToEncodedURIComponent(JSON.stringify(data)).length + " -> dehydrated: " + serialized.length + ", compressed dyhydrated: "+encodedData.length+")");
+    history.replaceState({ data: encodedData }, jQuery(document).find('title').text(), url);
 }
+
+function dehydrateData(data) {
+
+	var result = $.extend(true, {}, data);
+
+	result.verandah.tiles = dehydrateTiles(data.verandah.tiles);
+	result.path.tiles = dehydrateTiles(data.path.tiles);
+	result.courtyard.tiles = dehydrateTiles(data.courtyard.tiles);
+
+	return result;
+}
+
+function dehydrateTiles(tiles) {
+	var result = new Array();
+	for (var i=0; i<tiles.length; i++) {
+		for (var j=0; j<tiles[i].length; j++) {
+			result.push(tiles[i][j].pattern.charAt(0) + (tiles[i][j].rotation ? tiles[i][j].rotation : ""));
+		}
+	}
+	return result.join("");
+}
+
+function rehydrateData(data) {
+	var result = $.extend(true, {}, data);
+
+	result.verandah.tiles = rehydrateTiles(data.verandah);
+	result.path.tiles = rehydrateTiles(data.path);
+	result.courtyard.tiles = rehydrateTiles(data.courtyard);
+
+	return result;
+}
+
+function rehydrateTiles(location) {
+	var tileStr = location.tiles;
+	var cols = new Array();
+	var row;
+	$(tileStr.split(/\w\d*/g)).each(function(index, value) {
+		if (index % Math.ceil(location.rows) == 0) {
+			row = new Array();
+			cols.push(row);
+		}
+		var tile = new Tile();
+		var pattern = value.charAt(0);
+		if (pattern == "c") tile.pattern = "curved";
+		else if (pattern == "s") tile.pattern = "straight";
+		else if (pattern == "l") tile.pattern = "lotus";
+
+		tile.rotation = parseInt(value.match(/\d*$/)) || 0;
+		row.push(tile);
+	});
+	return cols;
+}
+
 saveData();
 
 $("#toggleOutlines").change(function() {
