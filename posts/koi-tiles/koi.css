@@ -1,0 +1,67 @@
+.tile {
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+	background-size: cover;
+/*	border: solid 1px black;*/
+	position: absolute;
+/*	box-shadow: inset -1px -1px 2px 0px rgba(127,127,127,1);*/
+}
+
+.tile:hover {
+	cursor: pointer;
+}
+
+.shift .tile:hover {
+	cursor: alias;
+}
+
+#verandah {
+	width: 80%;
+	position: relative;
+}
+
+#path {
+	width: 420px;
+	height: 80px;
+	position: relative;
+}
+
+#courtyard {
+	width: 420px;
+	height: 80px;
+	position: relative;
+}
+
+.curved {
+	background-image: url("curved.png");
+}
+.curved.outline {
+	background-image: url("curved.svg");	
+}
+
+.straight {
+	background-image: url("straight.png");
+}
+.straight.outline {
+	background-image: url("straight.svg");	
+}
+
+.lotus {
+	background-image: url("lotus.png");
+}
+.lotus.outline {
+	background-image: url("lotus.svg");	
+}
+
+.ripple {
+	background-image: url("ripples.png");
+}
+.ripple.outline {
+	background-image: url("ripples.svg");	
+}
+
+#data {
+	width: 100%;
+	height: 200px;
+}
