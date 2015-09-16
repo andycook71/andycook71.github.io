@@ -1,9 +1,19 @@
+body {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 h2 {
 	text-transform: capitalize;
 }
 
 ul {
-	margin-top: 15px;
+	padding-top: 15px;
+	clear: left;
+}
+
+a:hover {
+	cursor: pointer;
 }
 
 .tile {

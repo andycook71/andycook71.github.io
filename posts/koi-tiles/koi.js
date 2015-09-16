@@ -20,8 +20,6 @@ var tileWidth = $verandah.outerWidth() / parseFloat($verandah.data("cols"));
 
 var data = loadData();
 
-if (data.outlines) $("#toggleOutlines").attr("checked", "checked");
-
 init();
 
 window.addEventListener("keydown", shiftHandler, false);
@@ -185,8 +183,8 @@ $("a.reset").click(function() {
 	init();
 });
 
-$("#toggleOutlines").change(function() {
-    if (this.checked) {
+$(".toggleOutlines").click(function() {
+    if (!data.outlines) {
     	$(".tile").addClass("outline");
     	data.outlines = true;
     }
