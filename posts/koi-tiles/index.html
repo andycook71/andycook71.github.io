@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<script src="../../js/jquery-2.1.4.min.js"></script>
+		<script src="../../js/js.cookie.js"></script>
 		<script language="javascript" src="../../js/lz-string.min.js"></script>
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -22,10 +23,18 @@
 			</div>
 		</div>
 
+		<blockquote>
+
+		<ul>
+			<li> <a class="reset">Click here</a> to reset the layout to a plain pattern.</li>
+			<li> Click the tile to change the pattern.</li>
+			<li> Shift-click the tile to rotate clockwise.</li>
+			<li> Copy the link from the URL bar, or <a class="" id="url">from this link</a> to keep the layout.</li>
+		</ul>
 		<textarea id="data" style="display: none"></textarea>
-		<div><a class="btn btn-primary" href="index.html">Reset to plain pattern</a></div>
-		<div><a class="btn btn-primary" id="url"></a></div>
-		<label><input type="checkbox" id="toggleOutlines" />Toggle outlines</label>
+		<label><input type="checkbox" id="toggleOutlines" /> Toggle outlines</label>
+		</fieldset>
+
 	</body>
 	<script src="koi.js"></script>
 </html>

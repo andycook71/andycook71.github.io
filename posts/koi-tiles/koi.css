@@ -2,6 +2,10 @@ h2 {
 	text-transform: capitalize;
 }
 
+ul {
+	margin-top: 15px;
+}
+
 .tile {
 	width: 40px;
 	height: 40px;

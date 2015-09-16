@@ -22,9 +22,22 @@ var data = loadData();
 
 if (data.outlines) $("#toggleOutlines").attr("checked", "checked");
 
-if (!data.verandah) data.verandah = initLocation($verandah);
-if (!data.path) data.path = initLocation($path);
-if (!data.courtyard) data.courtyard = initLocation($courtyard);
+init();
+
+window.addEventListener("keydown", shiftHandler, false);
+window.addEventListener("keypress", shiftHandler, false);
+window.addEventListener("keyup", shiftHandler, false);
+
+function init() {
+	if (!data.verandah) data.verandah = initLocation($verandah);
+	if (!data.path) data.path = initLocation($path);
+	if (!data.courtyard) data.courtyard = initLocation($courtyard);
+	drawTiles($verandah, data.outlines, data.verandah);
+	drawTiles($path, data.outlines, data.path);
+	drawTiles($courtyard, data.outlines, data.courtyard);	
+
+	saveData();
+}
 
 function initLocation(location) {
 	var locationData = {
@@ -47,13 +60,6 @@ function shiftHandler(event) {
     else $("html").removeClass("shift");
 };
 
-window.addEventListener("keydown", shiftHandler, false);
-window.addEventListener("keypress", shiftHandler, false);
-window.addEventListener("keyup", shiftHandler, false);
-
-drawTiles($verandah, data.outlines, data.verandah);
-drawTiles($path, data.outlines, data.path);
-drawTiles($courtyard, data.outlines, data.courtyard);
 
 function drawTiles(location, outlines, data) {
 	var locationWidth = location.width();
@@ -94,6 +100,7 @@ function clickTile(e) {
 
 function loadData() {
 	var q = document.location.search.replace(/^\?/, "");
+	if (!q) q = Cookies.get("koi-data");
 	if (q) {
 		var decoded = LZString.decompressFromEncodedURIComponent(q);
 		return rehydrateData(JSON.parse(decoded));
@@ -114,8 +121,9 @@ function saveData() {
         + window.location.pathname
         + "?" + encodedData;
 //	$("#url").attr("href", url).text(url + " (" + jsonData.length + " -> " + encodedData.length + " chars)");
-	$("#url").attr("href", url).text("Link to this").attr("title", "(json: " + JSON.stringify(data).length +", compressed JSON: " + LZString.compressToEncodedURIComponent(JSON.stringify(data)).length + " -> dehydrated: " + serialized.length + ", compressed dyhydrated: "+encodedData.length+")");
+	$("#url").attr("href", url).attr("title", "(json: " + JSON.stringify(data).length +", compressed JSON: " + LZString.compressToEncodedURIComponent(JSON.stringify(data)).length + " -> dehydrated: " + serialized.length + ", compressed dyhydrated: "+encodedData.length+")");
     history.replaceState({ data: encodedData }, jQuery(document).find('title').text(), url);
+    Cookies.set('koi-data', encodedData, { expires: 365 });
 }
 
 function dehydrateData(data) {
@@ -153,7 +161,7 @@ function rehydrateTiles(location) {
 	var tileStr = location.tiles;
 	var cols = new Array();
 	var row;
-	$(tileStr.split(/\w\d*/g)).each(function(index, value) {
+	$(tileStr.match(/\w\d*/g)).each(function(index, value) {
 		if (index % Math.ceil(location.rows) == 0) {
 			row = new Array();
 			cols.push(row);
@@ -170,7 +178,12 @@ function rehydrateTiles(location) {
 	return cols;
 }
 
-saveData();
+$("a.reset").click(function() {
+	data.verandah = null;
+	data.path = null;
+	data.courtyard = null;
+	init();
+});
 
 $("#toggleOutlines").change(function() {
     if (this.checked) {
