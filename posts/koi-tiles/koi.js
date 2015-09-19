@@ -1,6 +1,6 @@
 (function( $ ){
 	$.fn.rotate = function(deg) {
-	    this.css({'transform': 'rotate('+deg+'deg)'});
+	    this.css({'transform': 'rotate('+deg+'deg)', "transition": "transform 0.25s ease-in-out"});
 	    return this; 
 	};
 })( jQuery );
@@ -53,6 +53,61 @@ function initLocation(location) {
 	return locationData;
 }
 
+function randomizeTiles() {
+	var allTiles = new Array();
+	for (var i=0; i<166; i++) allTiles.push(new Tile());
+	for (var i=0; i<23; i++) {
+		var tile = new Tile();
+		tile.pattern = "curved";
+		allTiles.push(tile);
+
+		tile = new Tile();
+		tile.pattern = "straight";
+		allTiles.push(tile);
+
+		tile = new Tile();
+		tile.pattern = "lotus";
+		allTiles.push(tile);
+	}
+
+	shuffle(allTiles);
+
+	randomizeLocation(data.verandah.tiles, allTiles);
+	randomizeLocation(data.path.tiles, allTiles);
+	randomizeLocation(data.courtyard.tiles, allTiles);
+
+	init();
+}
+
+function randomizeLocation(location, allTiles) {
+	for (var i=0; i<location.length; i++) {
+		for (var j=0; j<location[i].length; j++) {
+			var tile = allTiles.pop();
+			location[i][j].pattern = tile.pattern;
+			location[i][j].rotation = Math.round(Math.random() * 3) * 90;
+		}
+	}
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 function shiftHandler(event) {
     if (event.shiftKey) $("html").addClass("shift");
     else $("html").removeClass("shift");
@@ -60,6 +115,7 @@ function shiftHandler(event) {
 
 
 function drawTiles(location, outlines, data) {
+	location.empty();
 	var locationWidth = location.width();
 	for (var i=0; i<data.tiles.length; i++) {
 		for (var j=0; j<data.tiles[i].length; j++) {
@@ -70,7 +126,8 @@ function drawTiles(location, outlines, data) {
 			div.data = data.tiles[i][j];
 			location.append(div);
 			div.attr("title", "(" + i + "," + j + ")");
-			div.css("width", Math.min(tileWidth, locationWidth - (i * tileWidth)) + "px");
+//			div.css("width", Math.min(tileWidth, locationWidth - (i * tileWidth)) + "px");
+			div.css("width", tileWidth + "px");
 			div.css("height", tileWidth + "px");
 			div.css("left", i * tileWidth);
 			div.css("top", j * tileWidth);
@@ -206,6 +263,8 @@ $("a.reset").click(function() {
 	data.courtyard = null;
 	init();
 });
+
+$("a.randomize").click(randomizeTiles);
 
 $(".toggleOutlines").click(function() {
     if (!data.outlines) {

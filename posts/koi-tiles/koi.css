@@ -41,18 +41,21 @@ a:hover {
 #verandah {
 	width: 100%;
 	position: relative;
+	overflow: hidden;
 }
 
 #path {
 	width: 420px;
 	height: 80px;
 	position: relative;
+	overflow: hidden;
 }
 
 #courtyard {
 	width: 420px;
 	height: 80px;
 	position: relative;
+	overflow: hidden;
 }
 
 div.curved {
