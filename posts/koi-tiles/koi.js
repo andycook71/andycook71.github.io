@@ -16,7 +16,7 @@ var $path = $("#path");
 var $courtyard = $("#courtyard");
 
 var tileWidthMm = 200;
-var tileWidth = ($("#verandah").innerWidth()) / parseFloat($verandah.data("cols"));
+var tileWidth = Math.floor(($("#verandah").innerWidth()) / parseFloat($verandah.data("cols")));
 
 var data = loadData();
 
