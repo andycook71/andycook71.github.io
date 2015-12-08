@@ -46,7 +46,7 @@ ALTER EVENT SESSION [StatementLogger] ON SERVER STATE = START;
 
 You can watch the events happen in SSMS:
 
-<img src="../images/2015-12-08-sql-extended-events.png" />
+<img src="/images/2015-12-08-sql-extended-events.png" />
 
 or save them to an XML file like Bill Fellows does in his blog post link above.
 
