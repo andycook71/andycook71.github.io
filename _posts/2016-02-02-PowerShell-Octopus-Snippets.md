@@ -8,19 +8,19 @@ tags:
 
 Some useful snippets to execute in the Octopus Deploy script console.
 
-``` powershell
+``` c#
 # List files in a directory
 
 Get-ChildItem -Path "C:\Temp\SomeDirectory" -File
 ```
 
-``` powershell
+``` c#
 # Display contents of a file
 
 Get-Content "D:\Applications\Server\Application\Version\web.config"
 ```
 
-``` powershell
+``` c#
 # Update contents of web.config AppSetting
 
 $webConfig = "D:\Applications\Server\Application\Version\web.config"
