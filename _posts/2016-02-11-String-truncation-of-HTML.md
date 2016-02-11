@@ -20,7 +20,7 @@ Additional requirements are to put an ellipsis (`&hellip;`) and "read more" type
 
 Biggest difficulty is dealing with HTML of an unknown format. Could have malformed & self closing tags. For parsing HTML I have always turned to the excellent [HtmlAgilityPack](http://nuget.org/packages/HtmlAgilityPack).
 
-```c#
+```csharp
 var doc = new HtmlDocument();
 doc.LoadHtml(html);
 ```
@@ -29,7 +29,7 @@ HtmlAgilityPack turns arbitrary HTML into a well formed XML DOM.
 
 The next issue is working out how where to truncate. The approach I took is to traverse the DOM tree getting all the text nodes. LINQ and a couple of extension methods make this easy.
 
-```c#
+```csharp
 public static IEnumerable<HtmlNode> Descendants(this HtmlNode root)
 {
     return new[] { root }.Concat(root.ChildNodes.SelectMany(child => child.Descendants()));
@@ -45,7 +45,7 @@ Now count text characters in those nodes until I find the element where the trun
 
 Then truncate the text then delete all the remaining nodes with a recursive function that goes back up the DOM tree:
 
-```c#
+```csharp
 private static void RemoveFollowingNodes(HtmlNode lastNode)
 {
     while (lastNode.NextSibling != null) lastNode.NextSibling.Remove();
@@ -53,6 +53,8 @@ private static void RemoveFollowingNodes(HtmlNode lastNode)
 }
 ```
 There are a few more tricks like moving the ellipsis back to a preceeding node if the truncation resulted in an empty node. This would prevent situations like an empty `<li>` for instance. I also move the truncation point back to the previous word break if it is in the middle of a word.
+
+Gist of code follows.
 
 {% gist 145371c5b61cc05d0dd3 %}
 
