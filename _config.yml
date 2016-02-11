@@ -66,7 +66,7 @@ footer_right: "&lt;/&gt; on <a href=\"https://github.com/jacobtomlinson/carte-no
 # Build settings
 markdown: kramdown
 kramdown:
-#  input: GFM
+  input: GFM
   syntax_highlighter: rouge
   use_coderay: true
   coderay_line_numbers: table
