@@ -67,6 +67,7 @@ footer_right: "&lt;/&gt; on <a href=\"https://github.com/jacobtomlinson/carte-no
 markdown: kramdown
 kramdown:
   input: GFM
+  coderay_line_numbers: table
   syntax_highlighter: rouge
 #  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 permalink: pretty
