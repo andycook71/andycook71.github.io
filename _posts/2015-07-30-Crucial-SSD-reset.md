@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Crucial SSD reset
+author: Andy
+categories: work
 tags:
 - hardware
 ---

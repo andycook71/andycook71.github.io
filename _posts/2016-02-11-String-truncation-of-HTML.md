@@ -1,6 +1,8 @@
 ---
 layout: post
 title: String Truncation of HTML
+author: Andy
+categories: code
 tags:
 - C#
 ---

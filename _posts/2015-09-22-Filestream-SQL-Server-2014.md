@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Filestream SQL Server 2014
+author: Andy
+categories: work
 tags:
 - SQL
 ---

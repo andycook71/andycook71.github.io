@@ -1,6 +1,8 @@
 ---
 layout: post
 title: PowerShell Octopus Deploy Snippets
+author: Andy
+categories: code
 tags:
 - PowerShell
 - Octopus Deploy

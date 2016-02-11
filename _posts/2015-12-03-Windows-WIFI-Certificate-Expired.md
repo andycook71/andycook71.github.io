@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Windows 8 or 10 can't connect to WIFI with expired certificate
+author: Andy
+categories: work
 tags:
 - Windows
 ---

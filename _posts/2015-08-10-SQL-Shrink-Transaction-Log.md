@@ -1,6 +1,8 @@
 ---
 layout: post
 title: SQL 2014 Shrink Transaction Log
+author: Andy
+categories: work
 tags:
 - SQL
 ---

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Windows cannot find the Microsoft Software License Terms when installing in VM
+author: Andy
+categories: work
 tags:
 - windows
 - Parallels

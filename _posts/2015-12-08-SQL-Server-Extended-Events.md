@@ -1,6 +1,8 @@
 ---
 layout: post
 title: SQL Server Extended Events
+author: Andy
+categories: code
 tags:
 - SQL
 ---
