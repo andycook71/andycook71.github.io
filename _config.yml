@@ -69,8 +69,7 @@ kramdown:
 #  input: GFM
   syntax_highlighter: rouge
   use_coderay: true
-  coderay:
-    coderay_line_numbers: table
+  coderay_line_numbers: table
 #  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
 permalink: pretty
 exclude: [vendor]
