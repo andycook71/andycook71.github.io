@@ -32,3 +32,10 @@ Write-Output $obj
 #$obj.value = 'SomeNewValue'
 #$doc.Save($webConfig)
 ```
+
+``` powershell
+# Show all the IIS bindings on a machine
+
+Import-Module Webadministration
+Get-ChildItem -Path IIS:\Sites
+```
