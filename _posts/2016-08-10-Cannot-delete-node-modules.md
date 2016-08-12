@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cannot delete node_modules_
+title: Cannot delete node_modules
 author: Andy
 categories: code
 tags:
