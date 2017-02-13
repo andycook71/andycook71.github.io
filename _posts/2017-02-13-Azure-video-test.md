@@ -14,7 +14,7 @@ This is using the Azure Media Player.
 <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
 
 <script>
-$({
+$(function() {
 	var myOptions = {
 		"nativeControlsForTouch": false,
 		controls: true,

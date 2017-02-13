@@ -13,7 +13,7 @@ This is using JW Player.
 <div id='ccok3ffzlx9bok9y66r'></div>
 
 <script>
-$({
+$(function() {
   jwplayer('ccok3ffzlx9bok9y66r').setup({
     file:'http://andycookreadify.streaming.mediaservices.windows.net/35c53453-bee7-45df-a9a2-10fa700cf6d2/Module5.ism/manifest(format=m3u8-aapl-v3)',
     type:'m3u8',
