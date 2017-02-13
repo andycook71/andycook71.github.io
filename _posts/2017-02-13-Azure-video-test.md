@@ -6,8 +6,8 @@ categories: code
 tags:
 ---
 
-<link href="//amp.azure.net/libs/amp/1.8.0/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
-<script src="//amp.azure.net/libs/amp/1.8.0/azuremediaplayer.min.js"></script>
+<link href="//amp.azure.net/libs/amp/1.8.1/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
+<script src="//amp.azure.net/libs/amp/1.8.1/azuremediaplayer.min.js"></script>
 
 This is using the Azure Media Player.
 
