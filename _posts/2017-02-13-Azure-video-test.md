@@ -11,7 +11,9 @@ tags:
 
 This is using the Azure Media Player.
 
-<video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
+<div style="text-align: center">
+	<video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
+</div>
 
 <script>
 $(function() {
