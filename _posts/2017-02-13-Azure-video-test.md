@@ -8,6 +8,9 @@ tags:
 
 <link href="//amp.azure.net/libs/amp/1.8.1/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
 <script src="//amp.azure.net/libs/amp/1.8.1/azuremediaplayer.min.js"></script>
+<!--Add the amp-ga plugin script-->
+<script src="/js/amp-ga.min.js"></script>
+
 <style>
 	div > .azuremediaplayer {
 		margin: 0 auto;
@@ -30,7 +33,13 @@ $(function() {
 		height: "400",
 		poster: "https://video.andycook.com/asset-9898b21b-c000-4267-b74f-4ef8b6627d2c/Protest_000001.jpg?sv=2015-07-08&sr=c&si=9fbc2787-afe5-47a2-a5f2-23a48f14fc45&sig=uVOcPdAmOyntNpmV4A%2BMCRSZAQ0Hfy93ybLrsGoxQYk%3D&st=2017-02-13T04%3A14%3A07Z&se=2117-02-13T04%3A14%3A07Z",
 		logo: { "enabled": false }, 
-		techOrder: ["azureHtml5JS", "html5", "flashSS", "silverlightSS"]
+		techOrder: ["azureHtml5JS", "html5", "flashSS", "silverlightSS"],
+		plugins: {
+			ga: {
+				'eventsToTrack': ['playerConfig', 'loaded', 'playTime', 'percentsPlayed', 'start', 'end', 'play', 'pause', 'error', 'buffering', 'fullscreen', 'seek', 'bitrate'],
+				'debug': false
+			}
+		}
 	}
 	myPlayer = amp("azuremediaplayer", myOptions);
 	myPlayer.src([
