@@ -43,7 +43,7 @@ $(function() {
 	myPlayer = amp("azuremediaplayer", myOptions);
 	myPlayer.src([
 			{
-					"src": "http://video.andycook.com/cd9b2438-f079-412c-b302-f50766d6a27f/Protest_videostabilization.ism/manifest",
+					"src": "https://video.andycook.com/50bfdb62-4869-4a01-b82c-6ed37c22c942/Protest.ism/manifest",
 					"type": "application/vnd.ms-sstr+xml",
 					"protectionInfo": [
 							{
