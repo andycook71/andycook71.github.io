@@ -23,11 +23,11 @@ Open SQL Server Configuration Manager:
 
 Add a new alias:
 
-<img src="../images/2017-05-18-sql-alias1.png" />
+<img src="/images/2017-05-18-sql-alias1.png" />
 
 The name of the server will be the name of the local machine.
 
-<img src="../images/2017-05-18-sql-alias2.png" />
+<img src="/images/2017-05-18-sql-alias2.png" />
 
 You should make the alias for the 32 bit and 64 bit configurations.
 
