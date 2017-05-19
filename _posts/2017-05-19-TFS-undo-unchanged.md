@@ -14,7 +14,7 @@ This solution won't help with reverting whitespace only changes (all the parenth
 
 Download the appropriate version of TFS Power Tools for your version of TFS. eg:
 
-https://marketplace.visualstudio.com/items?itemName=TFSPowerToolsTeam.MicrosoftVisualStudioTeamFoundationServer2015Power
+[TFS Power Tools 2015](https://marketplace.visualstudio.com/items?itemName=TFSPowerToolsTeam.MicrosoftVisualStudioTeamFoundationServer2015Power)
 
 Then run the command:
 
@@ -24,5 +24,5 @@ You should run this command inside the TFS checkout directory otherwise TFPT won
 
 This post shows how to configure Visual Studio to have this as an easy menu command:
 
-http://stackoverflow.com/a/12294334/820344
+<http://stackoverflow.com/a/12294334/820344>
 
