@@ -6,10 +6,9 @@ categories: recipes
 tags:
 ---
 
-(Serves 6)
-
 - about 100 ml olive oil 
-- 1.2 kg diced lamb, preferably shoulder 
+- 1.4 kg diced lamb, preferably shoulder 
+- 1 diced onion
 - 1 sprig rosemary 
 - 2 bay leaves 
 - 1 clove garlic, finely minced 
@@ -18,7 +17,11 @@ tags:
 - 4 cups hot lamb or veal stock 
 - 500 g fregola 
 
-Heat olive oil in a large, heavy casserole. Brown lamb cubes. Add rosemary, bay leaves, garlic and salt and fry for a few minutes, stirring well to combine. 
+Heat some olive oil in a large, heavy casserole and soften onions then garlic. Set aside.
+
+Brown lamb cubes in batches with a bit of salt and pepper seasoning, perhaps use 2 pans.
+
+Add rosemary, bay leaves, garlic, onions and salt and fry for a few minutes, stirring well to combine. 
 
 Add wine and bring to the boil. Lower heat and simmer, covered, for about an hour or until lamb is tender. 
 
