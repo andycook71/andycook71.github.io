@@ -15,7 +15,7 @@ tags:
 - generous pinch salt or to taste 
 - 1 cup vernaccia or other dry white wine 
 - 4 cups hot lamb or veal stock 
-- 500 g fregola 
+- 500g fregola or risoni
 
 Heat some olive oil in a large, heavy casserole and soften onions then garlic. Set aside.
 
