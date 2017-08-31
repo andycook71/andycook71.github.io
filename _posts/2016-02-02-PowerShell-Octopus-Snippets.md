@@ -39,3 +39,17 @@ Write-Output $obj
 Import-Module Webadministration
 Get-ChildItem -Path IIS:\Sites
 ```
+
+``` powershell
+# Get DLL version info
+
+Get-Item "D:\Applications\Server\Application\bin\SOME-DLL.dll" | Format-List -Property *version*
+```
+
+``` powershell
+# Replace text in a file
+
+$path = "D:\Applications\Server\Application\SOME-FILE.TXT"
+(Get-Content $path) -replace 'GOOD', 'EVIL' | out-file $path 
+
+```
