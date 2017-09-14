@@ -31,6 +31,8 @@ The name of the server will be the name of the local machine.
 
 You should make the alias for the 32 bit and 64 bit configurations.
 
+Make sure TCP protocol is enabled. Restarting the SQL service should make the change take effect.
+
 Test this by connecting with SQL Server Management Studio as normal.
 
 Or can be done with PowerShell:
