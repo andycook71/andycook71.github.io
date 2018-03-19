@@ -43,7 +43,7 @@ And set the task to run our PowerShell script.
 
 Save the following file as Enable-wifi.ps1:
 
-```
+``` powershell
 $regKey="HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
 
 # Enable Wifi
