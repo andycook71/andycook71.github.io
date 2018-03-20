@@ -24,6 +24,9 @@ if ((Get-NetAdapter -Name 'Local Area Connection').Status -ne 'Disconnected')
     Disable-NetAdapter -Name 'Wireless Network Connection' -confirm:$False -AsJob | Wait-Job
     # Enable proxy
     Set-ItemProperty -path $regKey ProxyEnable -value 1
+
+    # Log it
+    Add-Content -Path "C:\Andy\Tools\network.log" -Value "$(Get-Date),enabled LAN"
 }
 ```
 
@@ -46,9 +49,15 @@ Save the following file as Enable-wifi.ps1:
 ``` powershell
 $regKey="HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
 
-# Enable Wifi
-Enable-NetAdapter -Name 'Wireless Network Connection' -confirm:$False
-Set-ItemProperty -path $regKey ProxyEnable -value 0
+if ((Get-NetAdapter -Name 'Local Area Connection').Status -eq 'Disconnected') 
+{
+    # Enable Wifi
+    Enable-NetAdapter -Name 'Wireless Network Connection' -confirm:$False
+    Set-ItemProperty -path $regKey ProxyEnable -value 0
+
+    # Log it
+    Add-Content -Path "network.log" -Value "$(Get-Date),enabled wifi"
+}
 ```
 
 Now create another scheduled task running the enable script.
