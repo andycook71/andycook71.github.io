@@ -53,3 +53,31 @@ $path = "D:\Applications\Server\Application\SOME-FILE.TXT"
 (Get-Content $path) -replace 'GOOD', 'EVIL' | out-file $path 
 
 ```
+
+``` powershell
+# List local users and groups
+
+$Computer = $env:COMPUTERNAME
+Write-Host "Users & groups on $Computer"
+$Results = @()
+([adsi]"WinNT://$Computer").psbase.Children | ? {$_.SchemaClassName -eq 'Group'} | % {
+    foreach ($Member in $($_.psbase.invoke('members'))) {
+        $Results += New-Object -TypeName PSCustomObject -Property @{
+            name = $Member.GetType().InvokeMember("Name", 'GetProperty', $null, $Member, $null) 
+            class = $Member.GetType().InvokeMember("Class", 'GetProperty', $null, $Member, $null) 
+            path = $Member.GetType().InvokeMember("ADsPath", 'GetProperty', $null, $Member, $null)
+            group = $_.psbase.name
+        } | ? {($_.Class -eq 'User') -and ([regex]::Matches($_.Path,'/').Count -eq 4)}
+    }
+}
+$Results | Group-Object Name | Select-Object Name,@{name='Group';expression={$_.Group | % {$_.Group}}},@{name='Computer';expression={$Computer}}
+
+```
+
+``` powershell
+# Create local user account
+
+NET USER username "your-temp-password" /ADD /passwordchg:yes /Y
+NET LOCALGROUP "Administrators" "username" /add
+
+```
