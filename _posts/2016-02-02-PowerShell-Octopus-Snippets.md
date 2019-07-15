@@ -41,6 +41,12 @@ Get-ChildItem -Path IIS:\Sites
 ```
 
 ``` powershell
+# Delete a website
+
+Remove-WebSite -Name TestSite
+```
+
+``` powershell
 # Get DLL version info
 
 Get-Item "D:\Applications\Server\Application\bin\SOME-DLL.dll" | Format-List -Property *version*
